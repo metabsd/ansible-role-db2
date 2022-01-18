@@ -5,14 +5,14 @@
 - name: Instance | Creating DB2 Fenced Groups
   group:
     name: "{{ item.fenced_group_name }}"
-    gid: "{{ item.gid | default(omit) }}"
+    gid: "{{ item.fenced_gid | default(omit) }}"
     state: present
   loop: "{{ db2_instances }}"
 
 - name: Instance | Creating DB2 Instance Groups
   group:
     name: "{{ item.group_name }}"
-    gid: "{{ item.fenced_gid | default(omit) }}"
+    gid: "{{ item.gid | default(omit) }}"
     state: present
   loop: "{{ db2_instances }}"
 
